@@ -1,0 +1,28 @@
+<section class='register' >
+   <div class="login-fild">
+    <form action="/studentRegister" method='post'>
+        
+        <input type="text" placeholder="Name" name='id' required>
+        <input type="email" placeholder="Email" name='email' required>
+        
+         <div class='radio-button' value='' >
+
+             <% Department.map(e=>{%>
+                <div class="selectDepartment">
+                    <label for="<%=e.name%>">
+                        <%=e.name%>
+                    </label>
+                    <input  required id=<%=e.name%> type="radio" name='degree' value="<%=e.short%>" >
+                </div>
+            <% })%>
+                 
+                
+         </div>
+
+
+         
+        <button class='reg-button'>Apply</button>
+    </form>
+   </div>
+</section>
+

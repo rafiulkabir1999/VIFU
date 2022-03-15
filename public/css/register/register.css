@@ -1,0 +1,79 @@
+.register{
+    height:80vh;
+    width:500px;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-fild{
+  
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    min-height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:90%
+    
+}
+input{
+    background: #E8F0FE;
+    border:none;
+    outline: none;
+    height: 33px;
+    width:80%;
+    
+    margin:5px 0px
+}
+input[type=radio]{
+  width:15px;
+}
+.reg-button{
+    width:80%;
+    background: #428BCA;
+    padding:0px;
+    border-radius:0px;
+    margin:5px 0px;
+    height: 33px;
+}
+::placeholder{
+    color:rgba(128, 128, 128, 0.582);
+    padding:0px 10px;
+    font-size: 12px;
+}
+.radio-button{
+   display: flex;
+    width:80%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top:10px;
+    flex-direction: column;
+
+}
+.radioname{
+    display: flex;
+    width:80%;
+    justify-content:space-around;
+    font-size: 12px;
+    padding-bottom:10px;
+}
+.radio-button input{
+    height: 15px;
+}
+.selectDepartment{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-right: auto;
+    line-height: 25px;
+    margin:5px 10px;
+    padding:5px 10px;
+}

@@ -1,0 +1,320 @@
+<section class='admin'>
+    <div class="search">
+        <div class="search-area">
+         <div class="searchbox">
+            <input type="text" placeholder="search here">
+            <i class="fas fa-plus-square icon-add"></i>
+         </div>
+        <div class="Admin_notification">
+            <div class="">        
+                <i class="fas fa-bell" onclick="Shownotification()">
+                    <% var notvalid=AAC.filter(e=>e.approve===false)%>
+                    <%if(notvalid==0){%>
+                        <span></span>
+                        <%}else{%>
+                   <p class='notification' ><%= notvalid.length%></p> 
+                   <%}%>
+                </i>
+                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-user-times"></i>
+              </div>
+        </div>
+        </div>
+        <div class="button">
+           <div class="admin-power">
+            <ul class='faculty-power'>
+                <li onclick="addDepartment()">ADD Department</li>
+                <li onclick="addCourses()">ADD Course</li>
+                <li>Profile</li>
+                
+            </ul>
+           </div>
+        </div>
+
+    
+    </div>
+
+    <div class="model" id="POPUP">
+       
+        <form class="body"  action="/admin/addDepartment" method='post' >
+             <div class="head">
+                <i class="fas fa-times" onclick="addDepartment()"></i>
+            </div>
+            <input type="text" value=''name='dept' id='dept' placeholder="Add Department Full Name">
+            <input type="text" value=''name='deptShort' id='dept-name' placeholder="Add Short Name">
+            <Button onclick="addDepartment()">Add Department</Button>
+        </form>
+    </div>
+
+    <div class="model" id="POPUP2">
+       
+        <form class="body"  action="/admin/addCourses" method='post' >
+             <div class="head">
+                <i class="fas fa-times" onclick="addCourses()"></i>
+            </div>
+            <input type="text" value=''name='dept' id='dept' placeholder="Add Department EX:CSE" required>
+            <input type="text" value=''name='courseName' id='courseName' required placeholder="Add Course Name EX:Programming Language 1">
+            <input type="text" value=''name='courseId' id='courseId' required placeholder="Add Course ID EX:CSE-101">
+
+            <div class='radio-button' value='' >
+                <input type="radio" name='day' value='SUN-TUE'required></input>
+                <input type="radio" name='day' value='MON-WED'></input>
+                
+           </div>
+           <div class="radioname">
+            <p>SUNDAY-TUESDAY</p>
+            <p>MONDAY-WEDNESDAY</p>
+           
+        </div>
+          
+
+            <select class='Time' name="Time" id="" value=''>Select Course Time
+                <option value="8am-9am" required>8am-9am</option>
+                <option value="9am-10am">9am-10am</option>
+                <option value="11am-12pm">10am-11am</option>
+                <option value="12pm-1pm">12pm-1pm</option>
+                <option value="1pm-2pm">1pm-2pm</option>
+                <option value="3pm-4pm">2pm-3pm</option>
+            </select>
+            <Button onclick="addCourses()">Add Course</Button>
+        </form>
+    </div>
+
+
+    <div class="model" id="Notification">
+       
+        <form class="body"  >
+             <div class="head">
+                 
+                <i class="fas fa-times" onclick="Shownotification()"></i>
+            </div>
+            <div class='notification_item'>
+                <% var c=AAC.filter(e=>e.approve===false)%>
+                <%c.map(e=>{%>
+                   <div class="notificationList">
+                       <p ><%=e.name%></p>
+                       <p><%=e.position%></p>
+                       <p><%=e.department%></p>
+                       <p><%=e.email%></p>
+                       <i class="fas fa-check "style="position: absolute;right:0;border-radius:50%;background:green;padding:3px;color:white;height:25px;width:23px;" 
+                       onclick="accept('<%= e.email%>','<%= e.name%>')"></i>
+
+                       <i class="fas fa-times "style="position: absolute;left:0;border-radius:50%;background:red;padding:3px;color:white;height:25px;width:23px;" 
+                           onclick="reject('<%= e.email %>','<%= e.name%>')"></i>
+
+                   </div>
+                   <%})%>
+               <Button onclick="Shownotification()">Accept All</Button>
+               <Button onclick="Shownotification()">Reject All</Button>
+            </div>
+        </form>
+    </div>
+
+    <div class="department">
+
+          
+          <%for(var i=0;i<All.length;i++){%>
+            <div class='single-department' >
+                <div class="depart-cart">
+                        <a href='/admin/<%=All[i].short%>'>
+                            <h2 class='title'><%= All[i].short %></h2>
+                        </a>
+                    
+                  </div>
+                  <div class='department-option'>
+                    <p >
+                        <i class="fas fa-trash" onclick="deleteDepartment('<%= All[i].short %>')"></i>
+                    </p>
+                    <a href="">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </div>
+            </div>
+            <%}%>
+    </div>
+
+  <div class="container">
+    <div class="details">
+         
+        
+        <div class="faculty">
+
+            <h4 class="facul">Total</h4>
+            <div class="faculty-number">
+                <p>Department</p>
+                <p>Faculty</p>
+                <p>Student</p>
+            </div>
+              <%for(var i=0;i<All.length;i++){%>
+                <div class="faculty-number">
+                 <div><%=All[i].short%></div> 
+                 <% var total=FA.filter(e=>e.department===All[i].short && e.approve===true)%>
+                    
+                    <div> <%=total.length%></div>
+                    <% var student=SA.filter(e=>e.department===All[i].short)%>
+                    <div> <%= student.length %></div>
+                   
+                </div>
+                <%}%>
+
+                <div class="total faculty-number ">
+                    <p>Total</p>
+                    <% var TotalStudent=FA.filter(e=>e.approve===true)%>
+                    <p><%= TotalStudent.length %></p>
+                    <% var TotalFaculty=SA.filter(e=>e.approve===true)%>
+                    <p><%= TotalFaculty.length%></p>
+                </div>
+
+                
+
+          </div>
+
+
+
+<div class="faculty">
+           
+    <h4 class="facul">Student</h4>
+
+     <%for(var i=0;i<All.length;i++){%>
+     <div class="faculty-number">
+      <div><%=All[i].short%></div> 
+      <% var student=SA.filter(e=>e.department===All[i].short)%>
+         <div> <%= student.length %></div>
+         <% var student=SA.filter(e=>e.department===All[i].short)%>
+         <div> <%= student.length %></div>
+     </div>
+     <%}%>
+    
+
+  
+
+        </div>
+</div>
+
+
+
+
+
+<div class="details2">
+    <div class="faculty2">
+           
+     <%for(var i=0;i<Course.length;i++){%>  
+        
+            <div class="faculty-number">
+            <p><%= Course[i].name %></p> 
+            <p><%= Course[i].time %></p> 
+            <p><%= Course[i].day %></p> 
+            <div> <%=Course[i].id%></div>
+        
+          
+             </div> 
+          <%}%>
+
+</div>
+
+  </div>
+ 
+              
+ 
+ 
+       
+ 
+        </div>
+
+    </div>
+</section>
+<script>
+    const addDepartment=()=>{
+        let show=document.getElementById("POPUP")
+        show.classList.toggle('show')
+    }
+    const addCourses=()=>{
+        let show=document.getElementById("POPUP2")
+        show.classList.toggle('show')
+    }
+    const Shownotification=()=>{
+        let show=document.getElementById("Notification")
+        show.classList.toggle('show')
+    }
+
+   const accept=(e,n)=>{
+
+      console.log("Accpet Math",e,n)
+
+       const data={
+           name:n,
+           email:e
+       };
+
+    fetch("http://localhost:5000/admin/addmember",
+        {
+           headers: {
+                'Content-Type': 'application/json'
+                 },
+           method: "POST",
+           body: JSON.stringify(data)
+        })
+      .then(res=>{
+        if(res.status===200){
+            window.location.href = "http://localhost:5000/admin"
+            
+        }
+      })
+        
+       .catch((res)=> console.log(res) )
+    console.log(data)
+     }
+   
+
+   const reject=(e,n)=>{
+   const data={
+           name:n,
+           email:e
+       }; 
+
+       fetch("http://localhost:5000/admin/removemember",
+        {
+           headers: {
+                'Content-Type': 'application/json'
+                 },
+           method: "DELETE",
+           body: JSON.stringify(data)
+        })
+      .then(res=>{
+        if(res.status===200){
+            window.location.href = "http://localhost:5000/admin"
+            
+        }
+      })
+        
+       .catch((res)=> console.log(res) )
+     }
+
+
+   
+
+   const deleteDepartment=(e)=>{
+
+    if(confirm(`Delete ${e} Department`)){
+        const data={
+           department:e
+       }
+
+       fetch('http://localhost:4000/admin/addDepartment',{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+       }).then(res=>{
+           if(res.status===200 ) window.location.href='http://localhost:4000/admin' 
+       }).catch(error=>console.log(error))
+    }
+    else{
+        return 0;
+    }
+       
+   }
+
+
+</script>

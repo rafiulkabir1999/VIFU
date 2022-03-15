@@ -1,0 +1,281 @@
+:root{
+ --background:#75ABE9;
+}
+body{
+    background: white;
+}
+.admin{
+    width:80%;
+    margin:0 auto;
+    background:white;
+    padding: 10px 20px;
+}
+.search{
+    height: 10vh;
+    background-color:var(--background);
+    margin:10px 0px;
+    border-radius: 6px;
+    background: var(--background);
+}
+.icon-add{
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    opacity: .6;
+}
+.icon-add:hover{
+    cursor:pointer
+}
+
+.department{
+    height: auto;
+    background: #c1c1c140;
+    margin:20px 0px;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding:20px;
+    gap:30px;
+}
+.single-department{
+    position: relative;
+
+}
+.depart-cart{
+    
+    height:200px;
+    background: rgb(255, 255, 255);
+    
+    border-radius: 6px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin:0 auto
+}
+
+.department-option{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px 0px;
+    color: #ff00007d
+}
+.department-option a{
+    color:rgba(158, 32, 74, 0.808);
+}
+
+.title{
+   
+    font-size: 44 !important;
+}
+
+
+.details{
+   min-height: auto;
+    margin:10px 0px;
+    background :#ffffff9e;
+    display: flex;
+    justify-content: space-between;
+    margin-top:auto;
+    width: 50%!important;
+}
+.details2{
+    height: 40vh;
+    margin:10px 0px;
+    background :#ffffff9e;
+    display: flex;
+    justify-content: space-between;
+    margin-top:auto;
+    width: 50%!important;
+}
+.faculty{
+    background: #efefef;
+     padding: 20px 0px;
+     width:48%;
+     border-radius: 6px;
+     position: relative;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.faculty2{
+    width:100%
+}
+.facul{
+    text-align: center;
+    color: var(--background);
+    margin: 10px 0px;
+    background: white;
+    width: 100%;
+    padding: 15px 0px;
+}
+.faculty-number{
+    display: flex;
+    justify-content: space-between;
+    padding:0px 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: bold;
+    background:var(--background);
+    border-radius: 6px;
+    height: 30px;
+    align-items: center;
+    color:white;
+}
+
+.total{
+   
+    bottom: 35px;
+  
+    background: #171616d4;
+}
+
+.student{
+    background: var(--background);
+     width: 48%;
+     padding:50px 20px;
+     border-radius: 6px;
+    
+}
+.container{
+    display: flex;
+   
+}
+.courses{
+    width:40%;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+   
+}.search-area{
+    width: 50%;
+    position: relative;
+    display: flex;
+}
+.search input{
+    background: white;
+     border-radius: 6px;;
+     width: 100%;
+     text-align: center;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.model{
+    opacity: 0;
+    width: 60%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    background: rgba(228, 228, 228, 0.247);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.model .head i{
+    display: flex;
+   
+    position: absolute;
+   
+    right: 0;
+    top: 0;
+    padding: 10px;
+    background:#efefef;
+    border-radius: 6px;
+    color: rgb(255, 0, 0);
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.body{
+    background: white;
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+}
+.show{
+    opacity: 1 !important;
+    pointer-events: auto;
+    z-index: 2;
+}
+.Time{
+    border: none;
+    width: 80%;
+    padding: 10px 5px;
+    margin:5px 0px;
+    background: #e8f0fe;
+    outline: none;
+    opacity: .8;
+}
+.facultyADD{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    padding: 10px 5px;
+    color: white;
+    
+    cursor: pointer;
+}
+.notification{
+    position: absolute;
+    top: 0;
+    /* padding: 0px 15px; */
+    /* font-size: small; */
+    color: white;
+    opacity: .8;
+    background: red;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    text-align: center;
+    line-height: 12px;
+    font-size: 8px;
+    margin: 5px 13px;
+}
+.notificationList{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    padding: 10px 0px;
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    line-height: 23px;
+    border-bottom: 1px solid gray;
+    margin-left: auto;
+    margin-right:auto;
+}
+.notification_item{
+    width: 100%;
+    
+}
+.searchbox{
+    position: relative;
+    flex:1;
+}
+.Admin_notification{
+    padding: 0px 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.Admin_notification i{
+    padding:0px 10px;
+    margin:0px 2px;
+}
+.Admin_notification i:hover{
+    cursor: pointer;
+    color:orange
+}
